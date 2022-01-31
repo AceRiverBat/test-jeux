@@ -7,7 +7,6 @@ class Personnage {
         this.pointDemagie = pointDemagie;
 
     }
-
     attaqueG(){
         this.Niveau = this.Niveau + 1;
        this.pointDemagie = this.pointDemagie - 5;
