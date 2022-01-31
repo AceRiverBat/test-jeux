@@ -1,12 +1,11 @@
 class Personnage {
-    constructor(Niveau, Force, pointDeVie, pointDemagie, PassePas, marteau){
-        
+    constructor(Niveau, Force, pointDeVie, pointDemagie){
+
         this.Niveau = Niveau;
         this.Force = Force;
         this.pointDeVie = pointDeVie;
         this.pointDemagie = pointDemagie;
-        this.marteau = marteau;
-        this.PassePas = PassePas;
+
     }
 
     attaqueG(){
@@ -25,14 +24,14 @@ class Personnage {
     }
 }
 
-let Gandalf = new Personnage(1, 60, 50, 200, 100);
-let Thor = new Personnage(1, 120, 50, 20, 100);
+let Gandalf = new Personnage(1, 60, 50, 200);
+let Thor = new Personnage(1, 120, 50, 20);
 
 console.log("Avant", Gandalf);
 Gandalf.attaqueG();
 Thor.degatsG();
-console.log("Apres", Gandalf, Thor);
+console.log("Apres", Gandalf, "Utilise PassePas", Thor);
 console.log("Avant", Thor);
 Thor.attaqueT();
 Gandalf.degatsT();
-console.log("Apres", Thor, Gandalf);
+console.log("Apres", Thor, "Utilise Marteau", Gandalf);
