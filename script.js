@@ -71,7 +71,7 @@ var img = document.createElement("img");
     */
 
 import Personnages from './Personnage'
-import Elfe  from './Guerrier';
+import Elfe  from './Elfe';
 import Orc from './Orc';
 
 class Magicien extends Personnages {
