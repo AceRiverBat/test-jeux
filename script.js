@@ -69,23 +69,78 @@ var img = document.createElement("img");
     var div = document.getElementById("chat");
     div.appendChild(img);
     */
-
-import Personnages from './Personnage'
-import Elfe  from './Elfe';
-import Orc from './Orc';
-
-class Magicien extends Personnages {
-    constructor(vie, force, magie) {
-        super(vie, force)
-        this.magie = magie;
+    class Personnages {
+        constructor(nom, vie, force) {
+            this.nom = nom
+            this.vie = vie;
+            this.force = force;
+        }
     }
-}
 
-let karma = new Elfe(100, 15, 150);
-let hurt = new Orc(200, 100, 150);
-let gandalf = new Magicien(100, 20, 150);
-console.log(hurt);
-karma.attaque(gandalf);
-console.log(hurt);
+    class Elfe extends Personnages {
+        constructor(vie, force, mana) {
+            super(vie, force)
+            this.mana = mana;
+        }
+        attaque(personne) {
+            if (!Orc) {
+                console.log("allié");
+            }
+            else {
+                personne.vie = personne.vie - 180;
+            }
+        }
+        poison(personne){
+               setInterval(function() {
+                   if (personne.vie > 0) {
+                       personne.vie-=10;
+                    console.log("la vie de " + personne.nom + " baisse");
+                    console.log(personne.vie);
+                   }else{
+                       console.log("t'es mort sale noob");
+                   }
+               }, 3000);
+        }
+    }
+
+    class Orc extends Personnages {
+        constructor(vie, force, shield) {
+            super(vie, force)
+            this.shield = shield;
+        }
+        hurlement() {
+            if (this.vie < 30) {
+                this.vie = this.vie + 50;
+            }
+        }
+    }
+    
+    class Magicien extends Personnages {
+        constructor(vie, force, magie) {
+            super(vie, force)
+            this.magie = magie;
+        }
+        Boomerang(){
+            if (hurt.hurlement) {
+                hurt.vie = hurt.vie - 30
+            }
+        }
+    }
+
+let karma = new Elfe("karma",100, 15, 150);
+let hurt = new Orc("hurt", 200, 100, 150);
+let gandalf = new Magicien("gandalf", 100, 20, 150);
+
+console.log("Hurt avant attaque de " + karma.nom);
+console.log(hurt.vie);
+karma.attaque(hurt);
+console.log("Hurt après attaque de " + karma.nom);
+console.log(hurt.vie);
+console.log("Hurt utilise hurlement");
 hurt.hurlement();
-console.log(hurt);
+console.log(hurt.vie);
+console.log("Gandalf utilise boomerang");
+gandalf.Boomerang();
+console.log(hurt.vie);
+console.log("Karma utilise poison sur Hurt");
+karma.poison(hurt);
